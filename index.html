@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#171717">
+<meta name="description" content="VELORA — Curated Elegance for Modern Living.">
+<title>VELORA — Curated Elegance for Modern Living</title>
+<style>
+:root{--ink:#171717;--muted:#777;--line:#e8e5df;--paper:#fbfaf7;--white:#fff;--soft:#f3f0ea;--accent:#b58b62;--danger:#b94b4b;--shadow:0 18px 50px rgba(20,20,20,.10);--radius:18px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--paper);color:var(--ink)}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}.container{width:min(1180px,calc(100% - 32px));margin:auto}
+header{position:sticky;top:0;z-index:40;background:rgba(251,250,247,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{height:72px;display:flex;align-items:center;gap:24px}.brand{font-family:Georgia,serif;font-size:29px;letter-spacing:.16em;text-decoration:none;color:var(--ink)}.navlinks{display:flex;gap:22px;margin-left:auto}.navlinks a{color:var(--ink);text-decoration:none;font-size:14px}.nav-actions{display:flex;gap:8px}.iconbtn{width:42px;height:42px;border-radius:50%;background:transparent;border:1px solid var(--line);position:relative}.badge{position:absolute;right:-2px;top:-2px;min-width:18px;height:18px;padding:0 5px;border-radius:20px;background:var(--ink);color:#fff;font-size:10px;display:grid;place-items:center}
+.hero{min-height:520px;display:grid;place-items:center;text-align:center;padding:80px 20px;background:linear-gradient(120deg,#eee8de,#faf8f3 52%,#e8e0d5)}.hero h1{font:clamp(48px,8vw,92px)/.95 Georgia,serif;margin:0 0 18px;letter-spacing:-.04em}.hero p{max-width:580px;margin:0 auto 30px;color:#5d5a55;font-size:17px}.eyebrow{text-transform:uppercase;letter-spacing:.2em;font-size:11px;color:#756a5d;margin-bottom:18px}.btn{padding:13px 20px;border-radius:999px;background:var(--ink);color:#fff;font-weight:650}.btn.light{background:#fff;color:var(--ink);border:1px solid var(--line)}.btn.small{padding:10px 15px;font-size:13px}
+.section{padding:70px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:25px}.section h2{font:42px Georgia,serif;margin:0}.muted{color:var(--muted)}
+.controls{display:grid;grid-template-columns:1fr auto auto;gap:10px;margin-bottom:20px}.search,.select,.field{width:100%;padding:13px 15px;border:1px solid var(--line);background:#fff;border-radius:12px;outline:none}.search:focus,.select:focus,.field:focus,textarea:focus{border-color:#aaa}.chips{display:flex;gap:8px;overflow:auto;padding-bottom:8px;margin-bottom:20px}.chip{white-space:nowrap;padding:9px 15px;border-radius:999px;border:1px solid var(--line);background:#fff}.chip.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.25s;position:relative}.card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.pic{aspect-ratio:4/5;background:#eee;position:relative;overflow:hidden}.pic img{width:100%;height:100%;object-fit:cover;display:block}.heart{position:absolute;top:12px;right:12px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.9);font-size:18px}.cardbody{padding:15px}.category{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#999}.title{font-weight:650;margin:6px 0}.price{font-weight:750}.mrp{text-decoration:line-through;color:#aaa;font-size:12px;margin-left:6px}.rating{font-size:12px;color:#806d55;margin-top:7px}.card-actions{display:flex;gap:8px;margin-top:12px}.card-actions .btn{flex:1}
+.empty,.errorbox{padding:45px 20px;text-align:center;background:#fff;border:1px dashed var(--line);border-radius:var(--radius)}
+footer{background:#171717;color:#ddd;margin-top:40px;padding:55px 0}.footergrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:35px}.footerbrand{font:30px Georgia,serif;letter-spacing:.12em;color:#fff}.footerlinks{display:grid;gap:10px}.footerlinks a{color:#bbb;text-decoration:none;font-size:13px}.copyright{border-top:1px solid #333;margin-top:35px;padding-top:20px;color:#888;font-size:12px}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.48);z-index:100;display:none;align-items:flex-end;justify-content:center}.overlay.open{display:flex}.modal,.drawer{background:var(--paper);box-shadow:0 -10px 50px rgba(0,0,0,.2);max-height:94vh;overflow:auto}.modal{width:min(900px,100%);border-radius:24px 24px 0 0;padding:25px}.drawer{margin-left:auto;width:min(470px,100%);height:100%;padding:25px}.overlay.drawerwrap{align-items:stretch}.close{float:right;background:#eee;border-radius:50%;width:36px;height:36px}
+.productdetail{display:grid;grid-template-columns:1fr 1fr;gap:28px}.mainimage{aspect-ratio:4/5;background:#eee;border-radius:16px;overflow:hidden}.mainimage img{width:100%;height:100%;object-fit:cover}.thumbs{display:flex;gap:7px;margin-top:8px;overflow:auto}.thumbs img{width:62px;height:72px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid transparent}.thumbs img.active{border-color:var(--ink)}.optiongroup{margin:20px 0}.optiongroup label{font-size:12px;font-weight:700;display:block;margin-bottom:8px}.options{display:flex;gap:8px;flex-wrap:wrap}.option{padding:9px 13px;border:1px solid var(--line);background:#fff;border-radius:9px}.option.selected{background:var(--ink);color:#fff}.qty{display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;width:max-content;overflow:hidden}.qty button{width:38px;height:38px;background:#fff}.qty span{width:38px;text-align:center}.cartitem{display:grid;grid-template-columns:70px 1fr auto;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}.cartitem img{width:70px;height:82px;object-fit:cover;border-radius:10px}.cartitem h4{margin:0 0 5px}.cartitem small{color:#777}.summary{margin-top:20px;border-top:1px solid var(--line);padding-top:16px}.sumrow{display:flex;justify-content:space-between;margin:9px 0}.total{font-size:20px;font-weight:800}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.full{grid-column:1/-1}textarea.field{min-height:90px;resize:vertical}.payment{display:grid;grid-template-columns:1fr 1fr;gap:10px}.payopt{border:1px solid var(--line);padding:14px;border-radius:12px;background:#fff}.payopt input{margin-right:7px}.notice{padding:12px;border-radius:10px;background:#f1eee8;font-size:12px;color:#665f56;margin:12px 0}.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);opacity:0;z-index:200;background:#171717;color:#fff;padding:12px 18px;border-radius:999px;font-size:13px;transition:.25s}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}.footergrid{grid-template-columns:1fr 1fr}.navlinks{display:none}}
+@media(max-width:650px){.container{width:min(100% - 22px,1180px)}.nav{height:64px}.brand{font-size:23px}.hero{min-height:440px;padding:60px 10px}.section{padding:48px 0}.section h2{font-size:34px}.controls{grid-template-columns:1fr 1fr}.controls .search{grid-column:1/-1}.grid{grid-template-columns:repeat(2,1fr);gap:10px}.cardbody{padding:11px}.productdetail{grid-template-columns:1fr}.modal{padding:18px}.formgrid,.payment{grid-template-columns:1fr}.footergrid{grid-template-columns:1fr}.hero p{font-size:15px}.btn{padding:12px 16px}}
+</style>
+</head>
+<body>
+<header><div class="container nav">
+<a class="brand" href="#">VELORA</a>
+<nav class="navlinks"><a href="#shop">Shop</a><a href="#new">New Arrivals</a><a href="#sale">Sale</a><a href="#footer">About</a></nav>
+<div class="nav-actions"><button class="iconbtn" id="wishBtn" aria-label="Wishlist">♡<span class="badge" id="wishCount">0</span></button><button class="iconbtn" id="cartBtn" aria-label="Cart">Bag<span class="badge" id="cartCount">0</span></button></div>
+</div></header>
+
+<main>
+<section class="hero"><div><div class="eyebrow">Curated Elegance for Modern Living</div><h1>Wear your<br>own standard.</h1><p>Thoughtfully selected fashion and lifestyle pieces designed to make everyday style feel effortless.</p><a class="btn" href="#shop">Explore Collection</a></div></section>
+
+<section class="section" id="shop"><div class="container">
+<div class="section-head"><div><div class="eyebrow">VELORA COLLECTION</div><h2>Shop the edit</h2></div><div class="muted" id="resultCount"></div></div>
+<div class="controls"><input id="search" class="search" placeholder="Search products..."><select id="sort" class="select"><option value="featured">Featured</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option><option value="rating">Top Rated</option><option value="new">Newest</option></select><select id="stockFilter" class="select"><option value="all">All Stock</option><option value="in">In Stock</option></select></div>
+<div class="chips" id="categories"></div><div id="products" class="grid"></div>
+</div></section>
+
+<section class="section" id="new"><div class="container"><div class="section-head"><div><div class="eyebrow">JUST IN</div><h2>New arrivals</h2></div></div><div id="newGrid" class="grid"></div></div></section>
+<section class="section" id="sale"><div class="container"><div class="section-head"><div><div class="eyebrow">LIMITED EDIT</div><h2>On sale</h2></div></div><div id="saleGrid" class="grid"></div></div></section>
+</main>
+
+<footer id="footer"><div class="container"><div class="footergrid">
+<div><div class="footerbrand">VELORA</div><p class="muted" style="color:#aaa;max-width:360px">Curated Elegance for Modern Living. Premium fashion and lifestyle essentials, selected for modern wardrobes.</p></div>
+<div><strong>Customer Care</strong><div class="footerlinks" style="margin-top:14px"><a href="#" data-policy="shipping">Shipping Policy</a><a href="#" data-policy="returns">Returns & Refunds</a><a href="#" data-policy="privacy">Privacy Policy</a><a href="#" data-policy="terms">Terms & Conditions</a></div></div>
+<div><strong>Store</strong><div class="footerlinks" style="margin-top:14px"><a href="#shop">All Products</a><a href="#new">New Arrivals</a><a href="#sale">Sale</a><a href="#" id="trackLink">Track Order</a></div></div>
+<div><strong>Contact</strong><div class="footerlinks" style="margin-top:14px"><a href="mailto:hello@velora.store">hello@velora.store</a><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">Pinterest</a></div></div>
+</div><div class="copyright">© <span id="year"></span> VELORA. All rights reserved.</div></div></footer>
+
+<div class="overlay" id="productOverlay"><div class="modal"><button class="close" onclick="closeOverlay('productOverlay')">×</button><div id="productDetail"></div></div></div>
+<div class="overlay drawerwrap" id="cartOverlay"><div class="drawer"><button class="close" onclick="closeOverlay('cartOverlay')">×</button><h2>Your Bag</h2><div id="cartItems"></div><div id="cartSummary"></div></div></div>
+<div class="overlay" id="checkoutOverlay"><div class="modal"><button class="close" onclick="closeOverlay('checkoutOverlay')">×</button><h2>Checkout</h2><div class="notice">Your details are used only to process your order. Online payment requires a payment gateway to be connected in the backend.</div><form id="checkoutForm"><div class="formgrid">
+<input class="field" name="name" placeholder="Full name" required><input class="field" name="phone" placeholder="Mobile number" required pattern="[0-9]{10}">
+<input class="field full" name="address" placeholder="House / Street / Area" required><input class="field" name="city" placeholder="City" required><input class="field" name="state" placeholder="State" required><input class="field" name="pincode" placeholder="PIN code" required pattern="[0-9]{6}">
+<textarea class="field full" name="note" placeholder="Delivery note (optional)"></textarea></div>
+<h3>Payment</h3><div class="payment"><label class="payopt"><input type="radio" name="payment" value="COD" checked> Cash on Delivery</label><label class="payopt"><input type="radio" name="payment" value="ONLINE"> Online Payment</label></div>
+<div class="summary" id="checkoutSummary"></div><button class="btn" style="width:100%;margin-top:18px" type="submit">Place Order</button></form></div></div>
+<div class="overlay" id="policyOverlay"><div class="modal"><button class="close" onclick="closeOverlay('policyOverlay')">×</button><div id="policyContent"></div></div></div>
+<div class="overlay" id="trackOverlay"><div class="modal"><button class="close" onclick="closeOverlay('trackOverlay')">×</button><h2>Track Your Order</h2><p class="muted">For orders placed on this browser, enter your order ID below. Full server-side tracking can be connected to Apps Script.</p><input id="trackInput" class="field" placeholder="Example: VLR-20261003-1234"><button class="btn" style="margin-top:10px" onclick="trackOrder()">Track Order</button><div id="trackResult" style="margin-top:18px"></div></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONFIG={
+  productsUrl:"products.json",
+  orderApiUrl:"",
+  orderLookupApiUrl:"",
+  freeShippingAbove:999,
+  shippingFee:79,
+  couponCode:"VELORA10",
+  couponPercent:10
+};
+
+let products=[], activeCategory="All", selectedProduct=null, selectedImage=0, selectedSize="", selectedColor="", couponApplied=false;
+let cart=JSON.parse(localStorage.getItem("velora_cart")||"[]");
+let wishlist=JSON.parse(localStorage.getItem("velora_wishlist")||"[]");
+let orders=JSON.parse(localStorage.getItem("velora_orders")||"[]");
+
+const $=s=>document.querySelector(s);
+const esc=v=>String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+const money=n=>"₹"+Number(n||0).toLocaleString("en-IN");
+const imgFallback='data:image/svg+xml;charset=UTF-8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="600" height="750"><rect width="100%" height="100%" fill="#eee8de"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#777" font-family="Georgia" font-size="28">VELORA</text></svg>');
+
+function save(){localStorage.setItem("velora_cart",JSON.stringify(cart));localStorage.setItem("velora_wishlist",JSON.stringify(wishlist));localStorage.setItem("velora_orders",JSON.stringify(orders));updateBadges()}
+function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2300)}
+function openOverlay(id){$("#"+id).classList.add("open")} function closeOverlay(id){$("#"+id).classList.remove("open")}
+
+async function loadProducts(){
+ const el=$("#products");el.innerHTML='<div class="empty" style="grid-column:1/-1">Loading collection...</div>';
+ try{
+   const res=await fetch(CONFIG.productsUrl+"?v="+Date.now(),{cache:"no-store"});
+   if(!res.ok) throw new Error("HTTP "+res.status);
+   products=await res.json();
+   if(!Array.isArray(products)) throw new Error("products.json must contain an array");
+   renderCategories(); renderAll();
+ }catch(e){
+   console.error(e);el.innerHTML='<div class="errorbox" style="grid-column:1/-1"><h3>Could not load products</h3><p class="muted">Make sure <b>products.json</b> is in the same GitHub repository as index.html.</p><button class="btn small" onclick="loadProducts()">Try Again</button></div>';
+ }
+}
+function categories(){return ["All",...new Set(products.map(p=>p.category||"Uncategorized"))]}
+function renderCategories(){ $("#categories").innerHTML=categories().map(c=>`<button class="chip ${c===activeCategory?'active':''}" onclick="setCategory(${JSON.stringify(c)})">${esc(c)}</button>`).join("")}
+function setCategory(c){activeCategory=c;renderCategories();renderAll()}
+function filtered(){
+ let a=products.filter(p=>(activeCategory==="All"||p.category===activeCategory));
+ const q=$("#search").value.trim().toLowerCase();
+ if(q)a=a.filter(p=>[p.name,p.category,p.subcategory,p.description].join(" ").toLowerCase().includes(q));
+ if($("#stockFilter").value==="in")a=a.filter(p=>Number(p.stock)>0);
+ const s=$("#sort").value;
+ if(s==="low")a.sort((x,y)=>x.price-y.price);if(s==="high")a.sort((x,y)=>y.price-x.price);if(s==="rating")a.sort((x,y)=>(y.rating||0)-(x.rating||0));if(s==="new")a.sort((x,y)=>new Date(y.createdAt||0)-new Date(x.createdAt||0));
+ return a
+}
+function card(p){
+ const liked=wishlist.includes(p.id), out=Number(p.stock)<=0;
+ return `<article class="card"><div class="pic"><img src="${esc(p.images?.[0]||"")}" onerror="this.src=imgFallback"><button class="heart" onclick="toggleWish('${esc(p.id)}')" aria-label="Wishlist">${liked?"♥":"♡"}</button></div><div class="cardbody"><div class="category">${esc(p.category||"")}</div><div class="title">${esc(p.name)}</div><div><span class="price">${money(p.price)}</span>${p.mrp?`<span class="mrp">${money(p.mrp)}</span>`:""}</div><div class="rating">★ ${Number(p.rating||0).toFixed(1)} · ${Number(p.reviewCount||0)} reviews</div><div class="card-actions"><button class="btn light small" onclick="openProduct('${esc(p.id)}')">Quick View</button><button class="btn small" ${out?"disabled":""} onclick="quickAdd('${esc(p.id)}')">${out?"Sold Out":"Add"}</button></div></div></article>`
+}
+function renderGrid(list,id){$("#"+id).innerHTML=list.length?list.map(card).join(""):'<div class="empty" style="grid-column:1/-1">No products found.</div>'}
+function renderAll(){
+ const a=filtered();renderGrid(a,"products");$("#resultCount").textContent=a.length+" item"+(a.length===1?"":"s");
+ const newest=[...products].sort((x,y)=>new Date(y.createdAt||0)-new Date(x.createdAt||0)).slice(0,4);
+ const sale=products.filter(p=>Number(p.mrp)>Number(p.price)).sort((x,y)=>(y.mrp-y.price)-(x.mrp-x.price)).slice(0,4);
+ renderGrid(newest,"newGrid");renderGrid(sale,"saleGrid");updateBadges()
+}
+function updateBadges(){$("#cartCount").textContent=cart.reduce((n,x)=>n+x.qty,0);$("#wishCount").textContent=wishlist.length}
+function toggleWish(id){wishlist=wishlist.includes(id)?wishlist.filter(x=>x!==id):[...wishlist,id];save();renderAll();toast(wishlist.includes(id)?"Added to wishlist":"Removed from wishlist")}
+function quickAdd(id){const p=products.find(x=>x.id===id);if(!p||p.stock<=0)return;addCart(p,p.sizes?.[0]||"",p.colors?.[0]||"");toast("Added to bag")}
+function addCart(p,size,color){
+ const key=[p.id,size,color].join("|"),found=cart.find(x=>x.key===key);
+ if(found)found.qty=Math.min(found.qty+1,Number(p.stock));else cart.push({key,id:p.id,qty:1,size,color});
+ save()
+}
+function openProduct(id){
+ selectedProduct=products.find(p=>p.id===id);selectedImage=0;selectedSize=selectedProduct?.sizes?.[0]||"";selectedColor=selectedProduct?.colors?.[0]||"";
+ if(!selectedProduct)return;
+ const p=selectedProduct, images=p.images||[];
+ $("#productDetail").innerHTML=`<div class="productdetail"><div><div class="mainimage"><img id="detailImage" src="${esc(images[0]||"")}" onerror="this.src=imgFallback"></div><div class="thumbs">${images.map((x,i)=>`<img class="${i===0?"active":""}" src="${esc(x)}" onerror="this.src=imgFallback" onclick="selectImage(${i})">`).join("")}</div></div><div><div class="category">${esc(p.category||"")}</div><h1>${esc(p.name)}</h1><div><span class="price" style="font-size:25px">${money(p.price)}</span>${p.mrp?`<span class="mrp">${money(p.mrp)}</span>`:""}</div><div class="rating">★ ${Number(p.rating||0).toFixed(1)} · ${Number(p.reviewCount||0)} reviews</div><p class="muted">${esc(p.description||"")}</p>${p.sizes?.length?`<div class="optiongroup"><label>SIZE</label><div class="options">${p.sizes.map(x=>`<button class="option ${x===selectedSize?"selected":""}" onclick="chooseOption('size',${JSON.stringify(x)})">${esc(x)}</button>`).join("")}</div></div>`:""}${p.colors?.length?`<div class="optiongroup"><label>COLOR</label><div class="options">${p.colors.map(x=>`<button class="option ${x===selectedColor?"selected":""}" onclick="chooseOption('color',${JSON.stringify(x)})">${esc(x)}</button>`).join("")}</div></div>`:""}<div class="notice">${Number(p.stock)>0?Number(p.stock)+" pieces available":"Currently sold out"}</div><button class="btn" style="width:100%" ${Number(p.stock)<=0?"disabled":""} onclick="addFromDetail()">${Number(p.stock)<=0?"Sold Out":"Add to Bag"}</button></div></div>`;
+ openOverlay("productOverlay")
+}
+function selectImage(i){selectedImage=i;$("#detailImage").src=selectedProduct.images[i]||imgFallback;document.querySelectorAll(".thumbs img").forEach((x,n)=>x.classList.toggle("active",n===i))}
+function chooseOption(type,val){if(type==="size")selectedSize=val;else selectedColor=val;openProduct(selectedProduct.id)}
+function addFromDetail(){addCart(selectedProduct,selectedSize,selectedColor);closeOverlay("productOverlay");toast("Added to bag");openCart()}
+function openCart(){renderCart();openOverlay("cartOverlay")}
+function renderCart(){
+ if(!cart.length){$("#cartItems").innerHTML='<div class="empty">Your bag is empty.</div>';$("#cartSummary").innerHTML='<a class="btn" style="display:block;text-align:center;margin-top:18px" href="#shop" onclick="closeOverlay(\\'cartOverlay\\')">Continue Shopping</a>';return}
+ $("#cartItems").innerHTML=cart.map((x,i)=>{const p=products.find(p=>p.id===x.id);if(!p)return "";return `<div class="cartitem"><img src="${esc(p.images?.[0]||"")}" onerror="this.src=imgFallback"><div><h4>${esc(p.name)}</h4><small>${x.size?"Size: "+esc(x.size):""}${x.color?" · Color: "+esc(x.color):""}</small><div class="qty" style="margin-top:9px"><button onclick="changeQty(${i},-1)">−</button><span>${x.qty}</span><button onclick="changeQty(${i},1)">+</button></div></div><div><b>${money(p.price*x.qty)}</b><button style="display:block;margin-top:10px;background:none;color:#999" onclick="removeCart(${i})">Remove</button></div></div>`}).join("");
+ const totals=calcTotals();$("#cartSummary").innerHTML=summaryHTML(totals)+`<button class="btn" style="width:100%;margin-top:16px" onclick="openCheckout()">Checkout</button><button class="btn light" style="width:100%;margin-top:8px" onclick="applyCoupon()">Apply Coupon</button>`
+}
+function changeQty(i,d){const p=products.find(p=>p.id===cart[i].id);cart[i].qty=Math.max(0,Math.min(cart[i].qty+d,Number(p?.stock||99)));if(!cart[i].qty)cart.splice(i,1);save();renderCart()}
+function removeCart(i){cart.splice(i,1);save();renderCart()}
+function calcTotals(){
+ const subtotal=cart.reduce((n,x)=>{const p=products.find(p=>p.id===x.id);return n+(p?p.price*x.qty:0)},0);
+ const discount=couponApplied?Math.round(subtotal*CONFIG.couponPercent/100):0,base=subtotal-discount;
+ const shipping=base===0?0:(base>=CONFIG.freeShippingAbove?0:CONFIG.shippingFee);
+ return {subtotal,discount,shipping,total:base+shipping}
+}
+function summaryHTML(t){return `<div class="summary"><div class="sumrow"><span>Subtotal</span><b>${money(t.subtotal)}</b></div>${t.discount?`<div class="sumrow"><span>Coupon</span><b>−${money(t.discount)}</b></div>`:""}<div class="sumrow"><span>Shipping</span><b>${t.shipping?money(t.shipping):"FREE"}</b></div><div class="sumrow total"><span>Total</span><span>${money(t.total)}</span></div></div>`}
+function applyCoupon(){const c=prompt("Enter coupon code");if(!c)return;if(c.trim().toUpperCase()===CONFIG.couponCode){couponApplied=true;toast("Coupon applied");renderCart()}else toast("Invalid coupon code")}
+function openCheckout(){if(!cart.length)return toast("Your bag is empty");closeOverlay("cartOverlay");$("#checkoutSummary").innerHTML=summaryHTML(calcTotals());openOverlay("checkoutOverlay")}
+async function submitOrder(order){
+ if(CONFIG.orderApiUrl){
+   const res=await fetch(CONFIG.orderApiUrl,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(order)});
+   if(!res.ok)throw new Error("Order API returned "+res.status);
+ }
+ orders.push(order);save()
+}
+$("#checkoutForm").addEventListener("submit",async e=>{
+ e.preventDefault();const f=new FormData(e.target),t=calcTotals();
+ const order={orderId:"VLR-"+new Date().toISOString().slice(0,10).replaceAll("-","")+"-"+Math.floor(1000+Math.random()*9000),createdAt:new Date().toISOString(),customer:Object.fromEntries(f.entries()),items:cart.map(x=>({...x,product:products.find(p=>p.id===x.id)?.name})),totals:t,status:"Placed"};
+ const btn=e.submitter;btn.disabled=true;btn.textContent="Placing Order...";
+ try{await submitOrder(order);cart=[];couponApplied=false;save();closeOverlay("checkoutOverlay");alert("Order placed successfully!\\nOrder ID: "+order.orderId);e.target.reset()}catch(err){console.error(err);toast("Could not submit order. Please try again.");}finally{btn.disabled=false;btn.textContent="Place Order"}
+});
+function trackOrder(){
+ const id=$("#trackInput").value.trim();const o=orders.find(x=>x.orderId.toLowerCase()===id.toLowerCase());
+ $("#trackResult").innerHTML=o?`<div class="notice"><b>${esc(o.orderId)}</b><br>Status: ${esc(o.status)}<br>Placed: ${new Date(o.createdAt).toLocaleString("en-IN")}<br>Total: ${money(o.totals.total)}</div>`:'<div class="notice">Order not found on this browser.</div>'
+}
+$("#wishBtn").onclick=()=>{if(!wishlist.length)return toast("Your wishlist is empty");const a=products.filter(p=>wishlist.includes(p.id));$("#products").scrollIntoView({behavior:"smooth"});$("#search").value="";activeCategory="All";renderCategories();renderGrid(a,"products");$("#resultCount").textContent=a.length+" wishlist item"+(a.length===1?"":"s")};
+$("#cartBtn").onclick=openCart;$("#search").oninput=renderAll;$("#sort").onchange=renderAll;$("#stockFilter").onchange=renderAll;
+$("#trackLink").onclick=e=>{e.preventDefault();openOverlay("trackOverlay")};
+document.querySelectorAll("[data-policy]").forEach(a=>a.onclick=e=>{e.preventDefault();const p=a.dataset.policy;const data={shipping:["Shipping Policy","Orders are normally processed after confirmation. Delivery times depend on destination and courier availability. Shipping charges are shown at checkout."],returns:["Returns & Refunds","Return eligibility depends on product condition and category. Items should be unused and returned with original packaging where applicable. Refund timing depends on the payment method."],privacy:["Privacy Policy","VELORA uses customer information to process orders, provide delivery updates and customer support. Payment credentials should never be stored in this frontend. Configure your secure payment provider and backend before accepting online payments."],terms:["Terms & Conditions","Product availability, pricing and promotions may change. Orders are subject to stock availability and successful order confirmation. Product images may have minor differences from delivered items due to photography and display conditions."]}[p];$("#policyContent").innerHTML=`<div class="eyebrow">VELORA</div><h2>${data[0]}</h2><p class="muted">${data[1]}</p>`;openOverlay("policyOverlay")});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelectorAll(".overlay.open").forEach(x=>x.classList.remove("open"))});
+$("#year").textContent=new Date().getFullYear();loadProducts();
+</script>
+</body>
+</html>
